@@ -1,20 +1,11 @@
 const baseProperties = {
   primary: {
-    main: "hsl(209, 23%, 22%)",
-    vDBlue: "hsl(207, 26%, 17%)",
-    vDBlueLM: "hsl(200, 15%, 8%)",
+    main: "hsl(200, 15%, 8%)",
     dGray: "hsl(0, 0%, 52%)",
-    vLGray: "hsl(0, 0%, 98%)",
     white: "hsl(0, 0%, 100%)"
   },
-  neutral: {
-    dBlue: "hsl(212, 24%, 26%)",
-    gBlue: "hsl(211, 10%, 45%)",
-    lGray: "hsl(223, 19%, 93%)",
-    vlGray: "hsl(228, 33%, 97%)"
-  },
   background: {
-    default: "hsl(223, 19%, 93%)"
+    default: "hsl(0, 0%, 98%)"
   }
 };
 

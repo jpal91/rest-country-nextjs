@@ -1,14 +1,16 @@
-import { ThemeProvider } from "@mui/material/styles";
-import { Container, CssBaseline } from "@mui/material";
+import { CssBaseline } from "@mui/material";
 
-import theme from "../assets";
+import { ThemeContextProvider } from "../helpers/context";
+import ThemeParent from "../components/theme/ThemeParent";
 
 function MyApp({ Component, pageProps }) {
   return (
-    <ThemeProvider theme={theme}>
-      <CssBaseline />
-      <Component {...pageProps} />
-    </ThemeProvider>
+    <ThemeContextProvider>
+      <ThemeParent>
+        <CssBaseline />
+        <Component {...pageProps} />
+      </ThemeParent>
+    </ThemeContextProvider>
   );
 }
 
