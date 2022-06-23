@@ -1,9 +1,7 @@
 import ThemeProvider 
 
 const HomePage = () => {
-	return (
-
-	)
+	return
 }
 
 export default HomePage
