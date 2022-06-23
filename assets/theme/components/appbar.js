@@ -5,8 +5,9 @@ const appbar = {
     root: {
       display: "flex",
       width: "100%",
-      backgroundColor: colors.primary.white
-    }
+      bgColor: colors.primary.white
+    },
+    colorDefault: colors.primary.white
   }
 };
 

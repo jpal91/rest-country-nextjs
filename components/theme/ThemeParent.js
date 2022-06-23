@@ -8,7 +8,7 @@ import ThemeContext from "../../helpers/context";
 const ThemeParent = (props) => {
   const themeCtx = useContext(ThemeContext);
   const currentTheme = themeCtx.darkMode ? darkTheme : theme;
-
+  console.log(themeCtx.darkMode);
   return <ThemeProvider theme={currentTheme}>{props.children}</ThemeProvider>;
 };
 

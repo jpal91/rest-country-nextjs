@@ -3,7 +3,7 @@ const typography = {
   fontWeightMedium: 600,
   fontWeightRegular: 300,
   fontSize: 16,
-  fontFamily: '"Nunito", sans'
+  fontFamily: '"Nunito Sans", sans-serif'
 };
 
 export default typography;
