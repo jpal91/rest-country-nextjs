@@ -1,7 +1,7 @@
 const baseProperties = {
   primary: {
     main: "hsl(209, 23%, 22%)",
-    white: "hsl(0, 0%, 100%)"
+    text: "hsl(0, 0%, 100%)"
   },
   background: {
     default: "hsl(207, 26%, 17%)"
