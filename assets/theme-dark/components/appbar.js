@@ -7,7 +7,6 @@ const appbar = {
       width: "100%",
       backgroundColor: colors.primary.main
     },
-    colorDefault: colors.primary.main
   }
 };
 

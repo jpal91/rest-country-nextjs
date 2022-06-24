@@ -6,7 +6,8 @@ const baseProperties = {
     white: "hsl(0, 0%, 100%)"
   },
   background: {
-    default: "hsl(0, 0%, 98%)"
+    default: "hsl(0, 0%, 98%)",
+    secondary: "hsl(0, 0%, 100%)"
   }
 };
 
