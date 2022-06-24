@@ -7,8 +7,7 @@ import FilterMenu from "../components/search-filter/FilterMenu";
 
 const HomePage = () => {
     return (
-        <Container fluid sx={{ width: "100%", flexDirection: 'column', m: 'auto', p: 0 }}>
-            <NavBar />
+
             <Grid
                 container
                 sx={{
@@ -25,7 +24,7 @@ const HomePage = () => {
 				</Grid>
 				
 			</Grid>
-        </Container>
+
     );
 };
 
