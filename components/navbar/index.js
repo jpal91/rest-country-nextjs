@@ -20,17 +20,18 @@ const NavBar = () => {
                     flexWrap: "nowrap",
                     alignItems: "center",
                     p: 2,
-                    ml: 10,
+                    ml: { xs: 0, lg: 10 },
+					
                 }}
             >
                 <Grid
                     item
                     xs={6}
                     lg={6}
-                    sx={{ justifyContent: "flex-start", ml: 10 }}
+                    sx={{ justifyContent: "flex-start", ml: { xs: 0, lg: 10 } }}
                 >
                     <Typography
-                        variant="h6"
+
                         sx={{
                             color: "primary.text",
                             fontWeight: 800,
@@ -43,7 +44,7 @@ const NavBar = () => {
                     item
                     xs={6}
                     lg={6}
-                    sx={{ justifyContent: "flex-end", mr: 10 }}
+                    sx={{ justifyContent: "flex-end", mr: { xs: 0, lg: 10 }}}
                 >
 					<IconButton onClick={() => themeCtx.changeTheme()}>
                     <ModeNightIcon sx={{ fontSize: 16, mr: 0.5, color: 'primary.text' }}/>
