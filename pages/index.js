@@ -1,6 +1,9 @@
+import { useState, useEffect } from 'react'
 import axios from 'axios'
 import Grid from "@mui/material/Grid";
+import useSWR from 'swr'
 
+import { getData } from '../helpers/dataobj';
 import SearchBar from "../components/search-filter/SearchBar";
 import FilterMenu from "../components/search-filter/FilterMenu";
 import CountryCard from "../components/card/CountryCard";
@@ -8,7 +11,22 @@ import CountryCardContainer from '../components/card/CountryCardContainer';
 
 const HomePage = (props) => {
     const { countryInfo } = props
-    
+    // const [countryData, setCountryData] = useState(countryInfo)
+    // const fetcher = (url) => axios.get(url).then((res) => res.data)
+    // const { data, error } = useSWR('https://restcountries.com/v3.1/all', fetcher)
+
+    // useEffect(() => {
+    //     if (data) {
+    //         const countryInfo = getData(data)
+    //         setCountryData(countryInfo)
+    //         return
+    //     }
+    // }, [data])
+
+    // if (!data || error) {
+    //     return <p>Loading...</p>
+    // }
+
     return (
         <Grid
             container
@@ -54,31 +72,15 @@ export const getStaticProps = async () => {
         }
     }
 
-    const countryInfo = []
-
-    data.forEach((d) => {
-        let obj = {
-            image: '',
-            pop: 0,
-            region: '',
-            capital: '',
-            name: ''
-        }
-        
-        obj.image = d.flags.svg || null
-        obj.pop = d.population || 0
-        obj.region = d.region || null
-        obj.capital = d.capital || null
-        obj.name = d.name.official || null
-
-        countryInfo.push(obj)
-    })
+    const countryInfo = getData(data)
+    const preRendCountryInfo = countryInfo.slice(0, 30)
 
     return {
         props: {
-            countryInfo: countryInfo
+            countryInfo: preRendCountryInfo
         }
     }
 }
+
 
 export default HomePage;
