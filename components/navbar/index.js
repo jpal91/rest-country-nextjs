@@ -11,7 +11,7 @@ const NavBar = () => {
     const themeCtx = useContext(ThemeContext);
 
     return (
-        <AppBar sx={{ backgroundColor: "background.secondary" }}>
+        <AppBar sx={{ backgroundColor: "background.secondary", position: 'sticky' }}>
             <Grid
                 container
                 sx={{
@@ -20,7 +20,7 @@ const NavBar = () => {
                     flexWrap: "nowrap",
                     alignItems: "center",
                     p: 2,
-                    ml: { xs: 0, lg: 10 },
+                    ml: { xs: 0, lg: 0 },
 					
                 }}
             >
@@ -28,7 +28,7 @@ const NavBar = () => {
                     item
                     xs={6}
                     lg={6}
-                    sx={{ justifyContent: "flex-start", ml: { xs: 0, lg: 10 } }}
+                    sx={{ justifyContent: "flex-start", ml: { xs: 0, lg: 5 } }}
                 >
                     <Typography
 
@@ -44,7 +44,7 @@ const NavBar = () => {
                     item
                     xs={6}
                     lg={6}
-                    sx={{ justifyContent: "flex-end", mr: { xs: 0, lg: 10 }}}
+                    sx={{ justifyContent: "flex-end", mr: { xs: 0, lg: 5 }}}
                 >
 					<IconButton onClick={() => themeCtx.changeTheme()}>
                     <ModeNightIcon sx={{ fontSize: 16, mr: 0.5, color: 'primary.text' }}/>

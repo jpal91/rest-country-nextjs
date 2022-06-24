@@ -1,4 +1,4 @@
-const baseProperties = {
+const colors = {
   primary: {
     main: "hsl(200, 15%, 8%)",
     text: "hsl(200, 15%, 8%)",
@@ -8,10 +8,11 @@ const baseProperties = {
   background: {
     default: "hsl(0, 0%, 98%)",
     secondary: "hsl(0, 0%, 100%)"
-  }
+  },
+  inputBorderColor: 'hsla(52, 100%, 50%, 1)'
 };
 
-export default baseProperties;
+export default colors;
 
 /*
 - Dark Blue (Dark Mode Elements): hsl(209, 23%, 22%)
