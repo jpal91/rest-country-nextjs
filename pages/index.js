@@ -3,6 +3,7 @@ import Grid from "@mui/material/Grid";
 import NavBar from "../components/navbar";
 
 import SearchBar from "../components/search-filter/SearchBar";
+import FilterMenu from "../components/search-filter/FilterMenu";
 
 const HomePage = () => {
     return (
@@ -14,15 +15,13 @@ const HomePage = () => {
                     width: "100%",
                     maxWidth: 1440,
                     alignItems: "center",
-                    p: 2,
+                    p: { xs: 0, lg: 2 },
 					mt: 5
                 }}
             >
-				<Grid container item xs={12}>
+				<Grid container item xs={12} sx={{ flexDirection: { xs: 'column', lg: 'row' }, width: '100%'}}>
 					<SearchBar />
-					<Grid item xs={6} lg={6}>
-						
-					</Grid>
+					<FilterMenu />
 				</Grid>
 				
 			</Grid>
