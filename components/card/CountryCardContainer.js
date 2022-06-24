@@ -12,15 +12,19 @@ const CountryCardContainer = (props) => {
 
     return (
         <React.Fragment>
-            {countryInfo.map((country) => (
+            {countryInfo.map((country, i) => {
+                return (
                 <CountryCard 
                     image={country.image}
                     pop={country.pop}
                     region={country.region}
                     capital={country.capital}
                     name={country.name}
+                    key={i}
+                    id={i}
                 />
-            ))}
+                )
+        })}
         </React.Fragment>
     )
 } 

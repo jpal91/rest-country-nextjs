@@ -5,10 +5,10 @@ import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 
 const CountryCard = (props) => {
-    const { image, pop, region, capital, name } = props
+    const { image, pop, region, capital, name, id } = props
     
-    pop = pop.toLocaleString()
-
+    let localePop = pop.toLocaleString()
+    console.log(id)
     return (
         <Card
             sx={{
@@ -19,6 +19,7 @@ const CountryCard = (props) => {
                 overflow: "hidden",
                 my: 1,
                 backgroundColor: "background.secondary",
+                contentVisibility: id > 8 ? 'auto' : 'visible'
             }}
         >
             <Box sx={{ transform: "translateY(-10px)" }}>
@@ -26,6 +27,7 @@ const CountryCard = (props) => {
                     src={image}
                     width={305}
                     height={205}
+                    alt={`${name}-country-flag`}
                 />
             </Box>
             <CardContent
@@ -41,7 +43,7 @@ const CountryCard = (props) => {
                     {name}
                 </Typography>
                 <Box sx={{ mt: 1, display: 'flex', flexDirection: 'column' }}>
-                    <Typography sx={{ color: 'primary.text', my: 1}}>Population: {pop}</Typography>
+                    <Typography sx={{ color: 'primary.text', my: 1}}>Population: {localePop}</Typography>
                     <Typography sx={{ color: 'primary.text', my: 1}}>Region: {region}</Typography>
                     <Typography sx={{ color: 'primary.text', my: 1}}>Capital: {capital}</Typography>
                 </Box>
