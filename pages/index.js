@@ -11,21 +11,21 @@ import CountryCardContainer from '../components/card/CountryCardContainer';
 
 const HomePage = (props) => {
     const { countryInfo } = props
-    // const [countryData, setCountryData] = useState(countryInfo)
-    // const fetcher = (url) => axios.get(url).then((res) => res.data)
-    // const { data, error } = useSWR('https://restcountries.com/v3.1/all', fetcher)
+    const [countryData, setCountryData] = useState(countryInfo)
+    const fetcher = (url) => axios.get(url).then((res) => res.data)
+    const { data, error } = useSWR('https://restcountries.com/v3.1/all', fetcher)
 
-    // useEffect(() => {
-    //     if (data) {
-    //         const countryInfo = getData(data)
-    //         setCountryData(countryInfo)
-    //         return
-    //     }
-    // }, [data])
+    useEffect(() => {
+        if (data) {
+            const temp = getData(data)
+            setCountryData(temp)
+            return
+        }
+    }, [data])
 
-    // if (!data || error) {
-    //     return <p>Loading...</p>
-    // }
+    if (!data || error) {
+        return <p>Loading...</p>
+    }
 
     return (
         <Grid
@@ -56,7 +56,7 @@ const HomePage = (props) => {
                 xs={12}
                 sx={{ width: '100%', mt: 5}}
             >
-                <CountryCardContainer countryInfo={countryInfo} />
+                <CountryCardContainer countryInfo={countryData} />
             </Grid>
         </Grid>
     );

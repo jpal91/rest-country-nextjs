@@ -10,7 +10,7 @@ const CountryCard = (props) => {
     
     
     let localePop = pop.toLocaleString()
-    console.log(id)
+
     return (
         <Card
             sx={{
@@ -26,7 +26,7 @@ const CountryCard = (props) => {
         >
             <Box sx={{ transform: "translateY(-10px)" }}>
                 <Image
-                    src={image}
+                    src={image || '/vercel.svg'}
                     width={305}
                     height={205}
                     alt={`${name}-country-flag`}

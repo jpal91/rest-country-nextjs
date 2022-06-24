@@ -5,45 +5,55 @@ import InfiniteScroll from 'react-infinite-scroll-component'
 
 const CountryCardContainer = (props) => {
     const { countryInfo } = props
-    let newInfo
-    const [countryData, setCountryData] = useState(countryInfo)
-    const [index, setIndex] = useState(0)
-    const fetcher = (url) => axios.get(url).then((res) => res.data)
-    const { data, error } = useSWR('https://restcountries.com/v3.1/all', fetcher)
+    const [dataArray, setDataArray] = useState([])
+
+    // useEffect(() => {
+    //     if (data) {
+    //         newInfo = getData(data)
+    //         setCountryData(newInfo.slice(0, 20))
+    //         return
+    //     }
+    // }, [data])
+
+    // if (!data || error) {
+    //     return <p>Loading...</p>
+    // }
 
     useEffect(() => {
-        if (data) {
-            newInfo = getData(data)
-            setCountryData(newInfo.slice(0, 20))
+        if (dataArray.length > 0 || !countryInfo) {
             return
         }
-    }, [data])
+        console.log(dataArray)
+        setDataArray(countryInfo.slice(0, 30))
 
-    if (!data || error) {
-        return <p>Loading...</p>
-    }
+    }, [countryInfo])
+
+    // if (!countryInfo) {
+    //     return
+    // }
     
     // if (!countryInfo) {
     //     return
     // }
 
     const fetchMoreData = () => {
-        let length = countryData.length
-        let temp = newInfo.slice(length, length + 20)
-        setCountryData([countryData, ...temp])
+        let length = dataArray.length
+        let temp = countryInfo.slice(length, length + 30)
+        setDataArray([...dataArray, ...temp])
         
-        
-        return countryData
+        console.log('Here')
+        return dataArray
     }
 
     return (
         <InfiniteScroll
-            dataLength={data.length}
+            dataLength={dataArray.length}
             next={fetchMoreData}
             hasMore={true}
             loader={<h4>Loading...</h4>}
+            
         >
-            {countryData.map((country, i) => {
+            {dataArray.map((country, i) => {
                 return (
                 <CountryCard 
                     image={country.image}
