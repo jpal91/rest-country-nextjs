@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { useRouter } from "next/router";
 import Grid from "@mui/material/Grid";
 import TextField from "@mui/material/TextField";
@@ -6,16 +6,26 @@ import SearchIcon from "@mui/icons-material/Search";
 import InputAdornment from "@mui/material/InputAdornment";
 import Paper from "@mui/material/Paper";
 
+import LoadingContext from "../../helpers/loadingcontext";
+
 const SearchBar = () => {
     const router = useRouter()
     const [searchText, setSearchText] = useState("");
     const [dbSearchText, setDBSearchText] = useState('')
+    const loadingCtx = useContext(LoadingContext)
     const handleTextChange = (event) => setSearchText(event.target.value);
 
+
     useEffect(() => {
+        if (!searchText) {
+            return
+        }
+        
+        
         const timerId = setTimeout(() => {
+            loadingCtx.changeLoadingState()
             setDBSearchText(searchText)
-        }, 1000)
+        }, 500)
 
         return () => {
             
@@ -27,7 +37,7 @@ const SearchBar = () => {
         if (!dbSearchText) {
             return
         }
-        console.log(dbSearchText)
+        
         router.push(`/search/${dbSearchText}`)
     }, [dbSearchText])
 

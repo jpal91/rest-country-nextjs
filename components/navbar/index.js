@@ -1,11 +1,13 @@
 import { useContext } from "react";
+import Link from 'next/link'
 import Typography from "@mui/material/Typography";
 import AppBar from "@mui/material/AppBar";
 import Grid from "@mui/material/Grid";
 import IconButton from "@mui/material/IconButton";
 import ModeNightIcon from '@mui/icons-material/ModeNight';
+import ButtonBase from '@mui/material/ButtonBase'
 
-import ThemeContext from "../../helpers/context";
+import ThemeContext from "../../helpers/themecontext";
 
 const NavBar = () => {
     const themeCtx = useContext(ThemeContext);
@@ -30,12 +32,16 @@ const NavBar = () => {
                     lg={6}
                     sx={{ justifyContent: "flex-start", ml: { xs: 0, lg: 5 } }}
                 >
-                    <Typography
+                    <Link href='/'>
+                    <ButtonBase>
+                    <a><Typography
 
                         variant='h6'
                     >
                         Where in the world?
-                    </Typography>
+                    </Typography></a>
+                    </ButtonBase>
+                    </Link>
                 </Grid>
                 <Grid
                     item

@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { useRouter } from "next/router";
 import FormControl from "@mui/material/FormControl";
 import InputLabel from "@mui/material/InputLabel";
@@ -7,11 +7,15 @@ import MenuItem from "@mui/material/MenuItem";
 import Grid from "@mui/material/Grid";
 import Paper from "@mui/material/Paper";
 
+import LoadingContext from "../../helpers/loadingcontext";
+
 const FilterMenu = (props) => {
     const [region, setRegion] = useState(props.selectedRegion || '');
+    const loadingCtx = useContext(LoadingContext)
     const router = useRouter()
     const handleRegionChange = (event) => {
         event.preventDefault()
+        loadingCtx.changeLoadingState()
         setRegion(event.target.value)
         router.push(`/filter/${event.target.value}`)
     }

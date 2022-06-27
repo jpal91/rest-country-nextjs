@@ -1,9 +1,13 @@
-import React, { useState, useEffect } from 'react'
-import CountryCard from "./CountryCard"
+import React, { useState, useEffect, useContext } from 'react'
 import InfiniteScroll from 'react-infinite-scroll-component'
+import CircularProgress from '@mui/material/CircularProgress'
+
+import LoadingContext from '../../helpers/loadingcontext'
+import CountryCard from "./CountryCard"
 
 const CountryCardContainer = (props) => {
     const { countryInfo } = props
+    const loadingCtx = useContext(LoadingContext)
     const [dataArray, setDataArray] = useState(countryInfo)
 
     useEffect(() => {
@@ -24,7 +28,8 @@ const CountryCardContainer = (props) => {
         return dataArray
     }
 
-    return (
+    
+    return loadingCtx.loading ? <CircularProgress sx={{ fontSize: 100, zIndex: 1000 }}/> : (
         <InfiniteScroll
             dataLength={dataArray.length}
             next={fetchMoreData}
@@ -44,9 +49,9 @@ const CountryCardContainer = (props) => {
                     id={country.id}
                 />
                 )
-        })}
-        </InfiniteScroll>
-    )
+            })}
+        </InfiniteScroll>)
+    
 } 
 
 export default CountryCardContainer

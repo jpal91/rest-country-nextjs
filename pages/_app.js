@@ -1,9 +1,10 @@
 import { CssBaseline } from "@mui/material";
-import { ThemeContextProvider } from "../helpers/context";
+import { ThemeContextProvider } from "../helpers/themecontext";
 import Container from "@mui/material/Container";
 
 import ThemeParent from "../components/theme/ThemeParent";
 import NavBar from "../components/navbar";
+import { LoadingContextProvider } from '../helpers/loadingcontext';
 
 function MyApp({ Component, pageProps }) {
     return (
@@ -20,7 +21,9 @@ function MyApp({ Component, pageProps }) {
                     }}
                 >
                     <NavBar />
-                    <Component {...pageProps} />
+                    <LoadingContextProvider>
+                        <Component {...pageProps} />
+                    </LoadingContextProvider>
                 </Container>
             </ThemeParent>
         </ThemeContextProvider>

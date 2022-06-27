@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useContext } from 'react'
 import axios from 'axios'
 import Grid from "@mui/material/Grid";
 import useSWR from 'swr'
@@ -7,12 +7,16 @@ import { getData } from '../helpers/dataobj';
 import SearchBar from "../components/search-filter/SearchBar";
 import FilterMenu from "../components/search-filter/FilterMenu";
 import CountryCardContainer from '../components/card/CountryCardContainer';
+import LoadingContext from '../helpers/loadingcontext';
+import { CircularProgress } from '@mui/material';
 
 const HomePage = (props) => {
     const { countryInfo } = props
     const [countryData, setCountryData] = useState(countryInfo)
+    const loadingCtx = useContext(LoadingContext)
+    let shouldFetch = countryData.length <= 30
     const fetcher = (url) => axios.get(url).then((res) => res.data)
-    const { data, error } = useSWR('https://restcountries.com/v3.1/all', fetcher)
+    const { data, error } = useSWR(shouldFetch ? 'https://restcountries.com/v3.1/all' : null, fetcher)
 
     useEffect(() => {
         if (data) {
@@ -22,11 +26,12 @@ const HomePage = (props) => {
         }
     }, [data])
 
-    if (!data || error) {
-        return <p>Loading...</p>
+    if (error) {
+        return <p>Error...</p>
     }
 
     return (
+        
         <Grid
             container
             sx={{
@@ -55,9 +60,11 @@ const HomePage = (props) => {
                 xs={12}
                 sx={{ width: '100%', mt: 5}}
             >
-                <CountryCardContainer countryInfo={countryData} />
+                {loadingCtx.loading ? <CircularProgress sx={{ zIndex: 1000, fontSize: 100 }}/> : <CountryCardContainer countryInfo={countryData} /> }
+                
             </Grid>
         </Grid>
+        
     );
 };
 

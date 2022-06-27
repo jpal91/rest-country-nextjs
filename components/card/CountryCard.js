@@ -1,16 +1,26 @@
+import { useContext } from 'react'
 import Image from "next/image";
-import Link from 'next/link'
+import { useRouter } from 'next/router';
 import Card from "@mui/material/Card";
 import CardContent from '@mui/material/CardContent'
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
+import ButtonBase from '@mui/material/ButtonBase'
+
+import LoadingContext from "../../helpers/loadingcontext";
 
 
 const CountryCard = (props) => {
     const { image, pop, region, capital, name, id } = props
-    
+    const loadingCtx = useContext(LoadingContext)
+    const router = useRouter()
     
     let localePop = pop.toLocaleString()
+
+    const handleCountryClick = (pageid) => {
+        loadingCtx.changeLoadingState()
+        router.push(`/country/${pageid}`)
+    }
 
     return (
         <Card
@@ -27,12 +37,14 @@ const CountryCard = (props) => {
         >
             
             <Box sx={{ transform: "translateY(-10px)" }}>
+                <ButtonBase onClick={() => handleCountryClick(id)}>
                 <Image
                     src={image || '/vercel.svg'}
                     width={305}
                     height={205}
                     alt={`${name}-country-flag`}
                 />
+                </ButtonBase>
             </Box>
             <CardContent
                 sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', px: 2, mt: -1 }}
@@ -44,8 +56,8 @@ const CountryCard = (props) => {
                 </Typography>
                 <Box sx={{ mt: 1, display: 'flex', flexDirection: 'column' }}>
                     <Typography variant='body1' sx={{ my: 1 }}>Population: {localePop}</Typography>
-                    <Typography variant='body1' sx={{ my: 1 }}>Region: {region}</Typography>
-
+                   <Typography className='span' variant='body1'>Region: {region}
+                   </Typography>
                     <Typography variant='body1' sx={{ my: 1 }}>Capital: {capital}</Typography>
                 </Box>
             </CardContent>

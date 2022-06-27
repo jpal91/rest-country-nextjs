@@ -1,19 +1,55 @@
-import React from 'react'
+import React, { useEffect, useContext } from 'react'
 import Grid from '@mui/material/Grid'
 import Typography from '@mui/material/Typography'
 
+import LoadingContext from '../helpers/loadingcontext'
+
 const CountryDetail = (props) => {
-    const { countryInfo } = props
+    const { pop, name, nativeName, region, subRegion, capital, tld, currency, languages } = props.countryInfo
+    const loadingCtx = useContext(LoadingContext)
+    let localePop = pop.toLocaleString()
+
+    useEffect(() => {
+        loadingCtx.changeLoadingState()
+    }, [])
 
     return (
         <React.Fragment>
             <Grid
+                container
                 item
                 xs={12}
                 sx={{ justifyContent: 'flex-start' }}
             >
-                <Typography variant='h5'>{countryInfo.name}</Typography>
+                <Typography variant='h5'>{name}</Typography>
             </Grid>
+            
+            <Grid
+                container
+                item
+                xs={12}
+                lg={6}
+                sx={{ height: '100%', justifyContent: 'flex-start', alignContent: 'flex-start', flexDirection: 'column', mt: 1}}
+            >
+                <Typography variant='body1' sx={{ m: 1 }}>{`Native Name: ${nativeName}`}</Typography>
+                <Typography variant='body1' sx={{ m: 1 }}>{`Population: ${localePop}`}</Typography>
+                <Typography variant='body1' sx={{ m: 1 }}>{`Region: ${region}`}</Typography>
+                <Typography variant='body1' sx={{ m: 1 }}>{`Sub Region: ${subRegion}`}</Typography>
+                <Typography variant='body1' sx={{ m: 1 }}>{`Capital: ${capital}`}</Typography>
+
+            </Grid>
+            <Grid
+                container
+                item
+                xs={12}
+                lg={6}
+                sx={{ height: '100%', justifyContent: 'flex-start', alignContent: 'flex-start', flexDirection: 'column', mt: 1}}
+            >
+                <Typography variant='body1' sx={{ m: 1 }}>{`Top Level Domain: ${tld}`}</Typography>
+                <Typography variant='body1' sx={{ m: 1 }}>{`Currencies: ${currency}`}</Typography>
+                <Typography variant='body1' sx={{ m: 1 }}>{`Languages: ${languages}`}</Typography>
+            </Grid>
+
         </React.Fragment>
     )
 }

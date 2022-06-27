@@ -3,7 +3,8 @@ import { ThemeProvider } from "@mui/material/styles";
 
 import theme from "../../assets/theme";
 import darkTheme from "../../assets/theme-dark";
-import ThemeContext from "../../helpers/context";
+import ThemeContext from "../../helpers/themecontext";
+
 
 const ThemeParent = (props) => {
   const themeCtx = useContext(ThemeContext);
