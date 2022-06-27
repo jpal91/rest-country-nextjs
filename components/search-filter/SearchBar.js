@@ -8,6 +8,8 @@ import Paper from "@mui/material/Paper";
 
 import LoadingContext from "../../helpers/loadingcontext";
 
+//searchbar component for each page
+//holds the state of the search and also changes the route based on the search
 const SearchBar = () => {
     const router = useRouter()
     const [searchText, setSearchText] = useState("");
@@ -15,7 +17,19 @@ const SearchBar = () => {
     const loadingCtx = useContext(LoadingContext)
     const handleTextChange = (event) => setSearchText(event.target.value);
 
+    //makes sure loading is off once arrived at new page
+    useEffect(() => {
+        if (!loadingCtx.loading) {
+            return
+        }
 
+        loadingCtx.changeLoadingState()
+    }, [searchText])
+
+    //used a term/debounced term combination in order to create a delay
+    //between the typing and the actual executed search
+    //this is used as opposed to an actual "search" button
+    //will search automatically after a 500 ms delay of no typing
     useEffect(() => {
         if (!searchText) {
             return
@@ -23,7 +37,7 @@ const SearchBar = () => {
         
         
         const timerId = setTimeout(() => {
-            loadingCtx.changeLoadingState()
+            
             setDBSearchText(searchText)
         }, 500)
 
@@ -37,7 +51,7 @@ const SearchBar = () => {
         if (!dbSearchText) {
             return
         }
-        
+        loadingCtx.changeLoadingState()
         router.push(`/search/${dbSearchText}`)
     }, [dbSearchText])
 

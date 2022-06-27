@@ -9,6 +9,8 @@ import ButtonBase from '@mui/material/ButtonBase'
 
 import ThemeContext from "../../helpers/themecontext";
 
+//top level nav bar
+//holds site title (and the link to '/') along with dark/light mode switch
 const NavBar = () => {
     const themeCtx = useContext(ThemeContext);
 
@@ -21,7 +23,7 @@ const NavBar = () => {
                     maxWidth: 1440,
                     flexWrap: "nowrap",
                     alignItems: "center",
-                    p: 2,
+                    p: { xs: 1, lg: 2},
                     ml: { xs: 0, lg: 0 },
 					
                 }}

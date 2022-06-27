@@ -7,6 +7,10 @@ import NavBar from "../components/navbar";
 import { LoadingContextProvider } from '../helpers/loadingcontext';
 
 function MyApp({ Component, pageProps }) {
+    
+    //two separate contexts are passed here
+    //ThemeContext is pertaining to switching between light/dark theme
+    //LoadingContext controls showing loading spinner or not
     return (
         <ThemeContextProvider>
             <ThemeParent>

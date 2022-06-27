@@ -9,10 +9,14 @@ import Paper from "@mui/material/Paper";
 
 import LoadingContext from "../../helpers/loadingcontext";
 
+//component that holds filter menu and navigates depending on selection
 const FilterMenu = (props) => {
     const [region, setRegion] = useState(props.selectedRegion || '');
     const loadingCtx = useContext(LoadingContext)
     const router = useRouter()
+
+    //after selection, changes to "loading", sets the Region, and navigates
+    //to filter/[regionid]
     const handleRegionChange = (event) => {
         event.preventDefault()
         loadingCtx.changeLoadingState()

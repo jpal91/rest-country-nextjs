@@ -9,7 +9,7 @@ import ButtonBase from '@mui/material/ButtonBase'
 
 import LoadingContext from "../../helpers/loadingcontext";
 
-
+//individual country card that makes up the CountryCardContainer
 const CountryCard = (props) => {
     const { image, pop, region, capital, name, id } = props
     const loadingCtx = useContext(LoadingContext)

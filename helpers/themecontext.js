@@ -1,5 +1,6 @@
 import { createContext, useState } from "react";
 
+//context for theme state
 const ThemeContext = createContext({
   darkMode: false,
   changeTheme: () => {}

@@ -1,5 +1,6 @@
 import { createContext, useState } from "react";
 
+//context for loading state
 const LoadingContext = createContext({
     loading: false,
     changeLoadingState: () => {}

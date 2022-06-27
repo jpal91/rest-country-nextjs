@@ -1,3 +1,6 @@
+//two functions, one retruns some basic info for HomePage
+//second returns more detailed object for [countryid]/details path
+
 export const getData = (arr) => {
     const countryInfo = []
 
@@ -36,7 +39,7 @@ export const getDetailedData = (obj) => {
         nativeName: nName[0].common,
         region: obj.region,
         subRegion: obj.subregion,
-        capital: obj.capital,
+        capital: obj.capital || null,
         tld: obj.tld[0],
         currency: currencies,
         languages: languages

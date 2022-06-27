@@ -1,24 +1,40 @@
+import { useEffect, useContext } from 'react'
 import { useRouter } from "next/router";
 import axios from "axios";
 import Grid from '@mui/material/Grid'
+import CircularProgress from '@mui/material/CircularProgress'
 
 import { getData } from '../../helpers/dataobj';
 import SearchBar from "../../components/search-filter/SearchBar";
 import FilterMenu from '../../components/search-filter/FilterMenu'
 import CountryCardContainer from "../../components/card/CountryCardContainer";
+import LoadingContext from '../../helpers/loadingcontext';
 
+//path responds based on selected filter region
 const FilteredRegion = (props) => {
     const router = useRouter()
+    const loadingCtx = useContext(LoadingContext)
     const { regionid } = router.query
     
     const { countryInfo } = props
+
+    //makes sure loading state is turned off
+    useEffect(() => {
+        if (!loadingCtx.loading) {
+            return
+        }
+
+        loadingCtx.changeLoadingState()
+    }, [regionid])
 
     if (!countryInfo) {
         return <p>Loading...</p>
     }
 
+    //if path hasn't been generated per getStaticPaths, will extend loading state
+    //while new page is generated 
     if (router.isFallback) {
-        return <p>Loading...</p>
+        return <CircularProgress sx={{ fontSize: 100, zIndex: 1000, color: 'primary.text' }}/>
     }
 
     return (
@@ -56,6 +72,8 @@ const FilteredRegion = (props) => {
     );
 }
 
+//pre-generates the paths for the specific regions
+//since these are set, static generation seemed like a good choice
 export const getStaticProps = async (context) => {
     const regionID = context.params.regionid
     const response = await axios.get(`https://restcountries.com/v3.1/region/${regionID}`)
@@ -77,6 +95,7 @@ export const getStaticProps = async (context) => {
     }
 }
 
+//paths are pre-set since they will not change, making static generation easy for this case
 export const getStaticPaths = () => {
     const pathList = ['Africa','Americas','Asia','Europe','Oceania']
 
