@@ -31,14 +31,14 @@ Progress based on the Frontend Mentor Challenge:
 
 ### Screenshot
 
-![](./screenshot.jpg)
+![](./public/screenshot.jpg)
 
 
 
 ### Links
 
 -   Solution URL: [https://github.com/jpal91/rest-country-nextjs](https://github.com/jpal91/rest-country-nextjs)
--   Live Site URL: [Add live site URL here](https://your-live-site-url.com)
+-   Live Site URL: [https://rest-country-nextjs.vercel.app/](https://rest-country-nextjs.vercel.app/)
 
 ## My process
 
@@ -72,6 +72,8 @@ I still had some issues with the images that are negatively impacting my score u
 I was having difficulty nailing down proper updating of loading states throughout the app for a while. It's still not perfect, but it does work. I need to get more experience with both Next.js useRouter() as well as the Link component to understand how to programatically update the states more efficiently after switching pages. 
 
 I had a HUGE learning curve on trying to get MUI ThemeProvider to do what I wanted with the components based on the light/dark mode. I was able to figure out quite a bit, but some of these sub components that MUI provides are still a bit of a mystery to me. I learn something new everytime I make a project with MUI, though, so improvement is always on the horizon!
+
+Along the same lines as MUI, there's still a little bit of "jumpyness" that happens when going through each page. Was having some difficulty there. It's not very noticeable, but it's definitely present. Need to work on separating the styles out so they don't impact eachother, especially on an action like opening a menu or going back and forth between pages. 
 
 ### Useful resources
 
