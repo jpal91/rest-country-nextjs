@@ -1,34 +1,91 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# REST Countries API with Color Theme Switcher - Next.js
 
-## Getting Started
+This is a solution to the [REST Countries API with color theme switcher challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/rest-countries-api-with-color-theme-switcher-5cacc469fec04111f7b848ca).
 
-First, run the development server:
+## Table of contents
 
-```bash
-npm run dev
-# or
-yarn dev
+-   [Overview](#overview)
+    -   [The challenge](#the-challenge)
+    -   [Screenshot](#screenshot)
+    -   [Links](#links)
+-   [My process](#my-process)
+    -   [Built with](#built-with)
+    -   [What I learned](#what-i-learned)
+    -   [Continued development](#continued-development)
+    -   [Useful resources](#useful-resources)
+-   [Author](#author)
+-   [Acknowledgments](#acknowledgments)
+
+## Overview
+
+### The challenge
+
+Progress based on the Frontend Mentor Challenge:
+
+-[x] See all countries from the API on the homepage 
+-[x] Search for a country using an `input` field 
+-[x] Filter countries by region 
+-[x] Click on a country to see more detailed information on a separate page 
+-[x] Click through to the border countries on the detail page 
+-[x] Toggle the color scheme between light and dark mode _(optional)_
+
+### Screenshot
+
+![](./screenshot.jpg)
+
+
+
+### Links
+
+-   Solution URL: [https://github.com/jpal91/rest-country-nextjs](https://github.com/jpal91/rest-country-nextjs)
+-   Live Site URL: [Add live site URL here](https://your-live-site-url.com)
+
+## My process
+
+### Built with
+
+- [Next.js](https://nextjs.org/) - React framework
+- [Material UI](https://mui.com/material-ui/) - For CSS Components, Grid, Mobile, Theme, etc.
+
+### What I learned
+
+Second Next.js app and this one had a lot more use for what Next.js is good at, mainly Static Generation. I used this quite extensively on the main page (pages/index.js) as well as the filter page (pages/filter/[regionid].js). This made for very fast static loading on both the initial render of the main page as well as all of the filter pages. 
+
+When I was creating the main page, I had difficulty with the fact that ALL countries were loading simultaneously. This decreased the Lighthouse scores significantly as 250+ DOM objects were being loaded at once. I decided to leverage a new component/package - InfiniteScroll on the CountryCardContainer component: 
+
+```js
+        <InfiniteScroll
+            dataLength={dataArray.length}
+            next={fetchMoreData}
+            hasMore={true}
+            loader={<h4>Loading...</h4>}
+            style={{ display: 'flex', flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'space-evenly' }}
+        >
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Infinite scroll allowed me to only render the first 30 (arbitrary number) countries on the page to limit the DOM size. Then as the user scrolls, it will generate the next 30 (and so on) as they scroll down. Lighthouse scores increased dramatically just with this one change
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+I still had some issues with the images that are negatively impacting my score unfortunately. Not really sure what the fix is. 
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+### Continued development
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+I was having difficulty nailing down proper updating of loading states throughout the app for a while. It's still not perfect, but it does work. I need to get more experience with both Next.js useRouter() as well as the Link component to understand how to programatically update the states more efficiently after switching pages. 
 
-## Learn More
+I had a HUGE learning curve on trying to get MUI ThemeProvider to do what I wanted with the components based on the light/dark mode. I was able to figure out quite a bit, but some of these sub components that MUI provides are still a bit of a mystery to me. I learn something new everytime I make a project with MUI, though, so improvement is always on the horizon!
 
-To learn more about Next.js, take a look at the following resources:
+### Useful resources
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+-   [Infinite Scroll](https://www.npmjs.com/package/react-infinite-scroll-component) - Helped me out a ton on this project. Made a significant impact on Lighthouse scores, although that may not be a huge deal with this overall, it was something I wanted to accomplish. 
+-   [Creative Tim - Material UI Dashboard](https://www.creative-tim.com/product/material-dashboard-react) - I can't give enough of a shoutout to this free template. Although I didn't use this specifically in this project, doing a prior project with this template taught me SO MUCH about setting a project up with custom CSS/Material UI components that it's really worth a shoutout. 
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
 
-## Deploy on Vercel
+## Author
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+-   Website - Coming Soon...
+-   Frontend Mentor - [@jpal91](https://www.frontendmentor.io/profile/jpal91)
+-   GitHub- [https://github.com/jpal91/](https://github.com/jpal91/)
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+
+## Acknowledgments
+
+- [CreativeTim](https://www.creative-tim.com/) - Big shout out. See [Useful resources](#useful-resources) above
