@@ -7,7 +7,8 @@ export const getData = (arr) => {
             pop: 0,
             region: '',
             capital: '',
-            name: ''
+            name: '',
+            id: ''
         }
         
         obj.image = d.flags.svg || null
@@ -15,9 +16,31 @@ export const getData = (arr) => {
         obj.region = d.region || null
         obj.capital = d.capital || null
         obj.name = d.name.official || null
+        obj.id = d.cca3
 
         countryInfo.push(obj)
     })
 
     return countryInfo
+}
+
+export const getDetailedData = (obj) => {
+    let currencies = Object.keys(obj.currencies)
+    let languages = Object.values(obj.languages)
+    let nName = Object.values(obj.name.nativeName)
+    
+    let cDetail = {
+        image: obj.flags.svg,
+        pop: obj.population,
+        name: obj.name.official,
+        nativeName: nName[0].common,
+        region: obj.region,
+        subRegion: obj.subregion,
+        capital: obj.capital,
+        tld: obj.tld[0],
+        currency: currencies,
+        languages: languages
+    }
+
+    return cDetail
 }

@@ -11,7 +11,7 @@ function MyApp({ Component, pageProps }) {
             <ThemeParent>
                 <CssBaseline />
                 <Container
-                    fluid
+                    fluid='true'
                     sx={{
                         width: "100%",
                         flexDirection: "column",

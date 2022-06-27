@@ -1,47 +1,26 @@
 import React, { useState, useEffect } from 'react'
 import CountryCard from "./CountryCard"
-import useSWR from 'swr'
 import InfiniteScroll from 'react-infinite-scroll-component'
 
 const CountryCardContainer = (props) => {
     const { countryInfo } = props
-    const [dataArray, setDataArray] = useState([])
-
-    // useEffect(() => {
-    //     if (data) {
-    //         newInfo = getData(data)
-    //         setCountryData(newInfo.slice(0, 20))
-    //         return
-    //     }
-    // }, [data])
-
-    // if (!data || error) {
-    //     return <p>Loading...</p>
-    // }
+    const [dataArray, setDataArray] = useState(countryInfo)
 
     useEffect(() => {
-        if (dataArray.length > 0 || !countryInfo) {
-            return
-        }
-        console.log(dataArray)
-        setDataArray(countryInfo.slice(0, 30))
+        setDataArray(countryInfo)
 
     }, [countryInfo])
 
-    // if (!countryInfo) {
-    //     return
-    // }
-    
-    // if (!countryInfo) {
-    //     return
-    // }
+    if (!countryInfo) {
+        return <p>Loading...</p>
+    }
+
 
     const fetchMoreData = () => {
         let length = dataArray.length
         let temp = countryInfo.slice(length, length + 30)
         setDataArray([...dataArray, ...temp])
         
-        console.log('Here')
         return dataArray
     }
 
@@ -51,7 +30,7 @@ const CountryCardContainer = (props) => {
             next={fetchMoreData}
             hasMore={true}
             loader={<h4>Loading...</h4>}
-            
+            style={{ display: 'flex', flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'space-evenly' }}
         >
             {dataArray.map((country, i) => {
                 return (
@@ -62,7 +41,7 @@ const CountryCardContainer = (props) => {
                     capital={country.capital}
                     name={country.name}
                     key={i}
-                    id={i}
+                    id={country.id}
                 />
                 )
         })}

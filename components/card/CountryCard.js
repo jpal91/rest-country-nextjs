@@ -1,9 +1,10 @@
 import Image from "next/image";
+import Link from 'next/link'
 import Card from "@mui/material/Card";
 import CardContent from '@mui/material/CardContent'
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
-import InfiniteScroll from 'react-infinite-scroll-component'
+
 
 const CountryCard = (props) => {
     const { image, pop, region, capital, name, id } = props
@@ -21,9 +22,10 @@ const CountryCard = (props) => {
                 overflow: "hidden",
                 my: 1,
                 backgroundColor: "background.secondary",
-                contentVisibility: id > 8 ? 'auto' : 'visible'
+                
             }}
         >
+            
             <Box sx={{ transform: "translateY(-10px)" }}>
                 <Image
                     src={image || '/vercel.svg'}

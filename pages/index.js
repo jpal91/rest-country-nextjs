@@ -6,7 +6,6 @@ import useSWR from 'swr'
 import { getData } from '../helpers/dataobj';
 import SearchBar from "../components/search-filter/SearchBar";
 import FilterMenu from "../components/search-filter/FilterMenu";
-import CountryCard from "../components/card/CountryCard";
 import CountryCardContainer from '../components/card/CountryCardContainer';
 
 const HomePage = (props) => {
@@ -48,7 +47,7 @@ const HomePage = (props) => {
                 }}
             >
                 <SearchBar />
-                <FilterMenu />
+                <FilterMenu selectedRegion={''}/>
             </Grid>
             <Grid
                 container

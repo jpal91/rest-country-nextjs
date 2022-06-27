@@ -11,7 +11,7 @@ const NavBar = () => {
     const themeCtx = useContext(ThemeContext);
 
     return (
-        <AppBar sx={{ backgroundColor: "background.secondary", position: 'sticky' }}>
+        <AppBar sx={{ backgroundColor: "background.secondary", position: 'sticky', maxWidth: '100%' }}>
             <Grid
                 container
                 sx={{
