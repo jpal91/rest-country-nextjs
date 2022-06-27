@@ -8,6 +8,7 @@ import card from "./components/card";
 import container from "./components/container";
 import grid from "./components/grid";
 import inputOutlined from "./components/inputoutline";
+import cardcontent from "./components/cardcontent";
 
 export default createTheme({
   typography: { ...typography },
@@ -18,6 +19,7 @@ export default createTheme({
     MuiCard: { ...card },
     MuiContainer: { ...container },
     MuiGrid: { ...grid },
-    MuiOutlinedInput: { ...inputOutlined }
+    MuiOutlinedInput: { ...inputOutlined },
+    MuiCardContent: { ...cardcontent }
   }
 });

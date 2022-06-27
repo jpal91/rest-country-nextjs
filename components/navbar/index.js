@@ -32,10 +32,7 @@ const NavBar = () => {
                 >
                     <Typography
 
-                        sx={{
-                            color: "primary.text",
-                            fontWeight: 800,
-                        }}
+                        variant='h6'
                     >
                         Where in the world?
                     </Typography>
@@ -49,11 +46,8 @@ const NavBar = () => {
 					<IconButton onClick={() => themeCtx.changeTheme()}>
                     <ModeNightIcon sx={{ fontSize: 16, mr: 0.5, color: 'primary.text' }}/>
 					<Typography
-                        variant="body2"
-                        sx={{
-                            color: "primary.text",
-                            fontWeight: 600,
-                        }}
+                        variant="h6"
+
                     >
                         Dark Mode
                     </Typography>

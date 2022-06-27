@@ -10,6 +10,7 @@ import grid from "./components/grid";
 import inputOutlined from "./components/inputoutline";
 import menu from "./components/paper";
 import inputlabel from "./components/inputlabel";
+import cardcontent from "./components/cardcontent";
 
 export default createTheme({
   typography: { ...typography },
@@ -22,6 +23,7 @@ export default createTheme({
     MuiGrid: { ...grid },
     MuiOutlinedInput: { ...inputOutlined },
     MuiMenu: { ...menu },
-    MuiInputLabel: { ...inputlabel }
+    MuiInputLabel: { ...inputlabel },
+    MuiCardContent: { ...cardcontent }
   }
 });

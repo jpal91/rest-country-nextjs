@@ -35,21 +35,18 @@ const CountryCard = (props) => {
                 />
             </Box>
             <CardContent
-                sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', px: 2, mt: -2 }}
+                sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', px: 2, mt: -1 }}
             >
                 <Typography
-                    sx={{
-                        color: "primary.text",
-                        fontWeight: 800,
-                        
-                    }}
+                    variant='h6'
                 >
                     {name}
                 </Typography>
                 <Box sx={{ mt: 1, display: 'flex', flexDirection: 'column' }}>
-                    <Typography sx={{ color: 'primary.text', my: 1}}>Population: {localePop}</Typography>
-                    <Typography sx={{ color: 'primary.text', my: 1}}>Region: {region}</Typography>
-                    <Typography sx={{ color: 'primary.text', my: 1}}>Capital: {capital}</Typography>
+                    <Typography variant='body1' sx={{ my: 1 }}>Population: {localePop}</Typography>
+                    <Typography variant='body1' sx={{ my: 1 }}>Region: {region}</Typography>
+
+                    <Typography variant='body1' sx={{ my: 1 }}>Capital: {capital}</Typography>
                 </Box>
             </CardContent>
         </Card>

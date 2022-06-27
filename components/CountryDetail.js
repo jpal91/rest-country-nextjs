@@ -12,7 +12,7 @@ const CountryDetail = (props) => {
                 xs={12}
                 sx={{ justifyContent: 'flex-start' }}
             >
-                <Typography variant='h5' sx={{ fontWeight: 800 }}>{countryInfo.name}</Typography>
+                <Typography variant='h5'>{countryInfo.name}</Typography>
             </Grid>
         </React.Fragment>
     )
