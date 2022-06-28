@@ -61,8 +61,8 @@ const CountryDetail = (props) => {
                 sx={{ display: 'inline-flex', flexWrap: 'nowrap', justifyContent: 'space-between', alignItems: 'center', flexDirection: 'row', mt: 1}}
             >
                 <Typography variant='body1'>Border Countries:</Typography>
-                {borders.length > 0 && borders.map((b) => (
-                    <Paper sx={{ backgroundColor: 'background.secondary' }}>
+                {borders.length > 0 && borders.map((b, i) => (
+                    <Paper sx={{ backgroundColor: 'background.secondary' }} key={`border${i}`}>
                         <Button variant='outlined' onClick={() => router.push(`/country/${b}`)}>{b}</Button>
                     </Paper>
                 ))}
