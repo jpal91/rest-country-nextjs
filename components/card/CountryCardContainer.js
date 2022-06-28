@@ -61,6 +61,7 @@ const CountryCardContainer = (props) => {
                     name={country.name}
                     key={i}
                     id={country.id}
+                    count={i}
                 />
                 )
             })}

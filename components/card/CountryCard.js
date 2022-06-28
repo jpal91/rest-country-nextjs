@@ -11,7 +11,7 @@ import LoadingContext from "../../helpers/loadingcontext";
 
 //individual country card that makes up the CountryCardContainer
 const CountryCard = (props) => {
-    const { image, pop, region, capital, name, id } = props
+    const { image, pop, region, capital, name, id, count } = props
     const loadingCtx = useContext(LoadingContext)
     const router = useRouter()
     
@@ -36,12 +36,14 @@ const CountryCard = (props) => {
             }}
         >
             
-            <Box sx={{ transform: "translateY(-10px)" }}>
-                <ButtonBase onClick={() => handleCountryClick(id)}>
+            <Box sx={{ transform: "translateY(-10px)"}}>
+                <ButtonBase onClick={() => handleCountryClick(id)} sx={{ position: 'relative', width: 305, height: 205 }}>
                 <Image
                     src={image || '/vercel.svg'}
-                    width={305}
-                    height={205}
+                    layout='fill'
+                    priority={count <= 30 ? true : false}
+                    objectFit='contain'
+                    objectPosition={'50% 50%'}
                     alt={`${name}-country-flag`}
                 />
                 </ButtonBase>

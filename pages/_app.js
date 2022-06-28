@@ -18,7 +18,7 @@ function MyApp({ Component, pageProps }) {
                 <Container
                     fluid='true'
                     sx={{
-                        width: "100%",
+                        width: { xs: '100%', lg: 1200 },
                         flexDirection: "column",
                         m: "auto",
                         p: 0,
