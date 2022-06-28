@@ -11,6 +11,7 @@ class MyDocument extends Document {
             href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;600;800&display=swap"
             rel="stylesheet"
           />
+          <meta name='description' content='Find information about every country in the world' />
         </Head>
         <body>
           <Main />

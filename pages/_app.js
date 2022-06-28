@@ -1,3 +1,5 @@
+import React from 'react'
+import Head from 'next/head'
 import { CssBaseline } from "@mui/material";
 import { ThemeContextProvider } from "../helpers/themecontext";
 import Container from "@mui/material/Container";
@@ -12,6 +14,10 @@ function MyApp({ Component, pageProps }) {
     //ThemeContext is pertaining to switching between light/dark theme
     //LoadingContext controls showing loading spinner or not
     return (
+        <React.Fragment>
+        <Head>
+            <title>Where in the World?</title>
+        </Head>
         <ThemeContextProvider>
             <ThemeParent>
                 <CssBaseline />
@@ -31,6 +37,7 @@ function MyApp({ Component, pageProps }) {
                 </Container>
             </ThemeParent>
         </ThemeContextProvider>
+        </React.Fragment>
     );
 }
 

@@ -1,5 +1,6 @@
 import React, { useEffect, useContext } from 'react'
 import { useRouter } from 'next/router'
+import Link from 'next/link'
 import Grid from '@mui/material/Grid'
 import Typography from '@mui/material/Typography'
 import Button from '@mui/material/Button'
@@ -54,16 +55,26 @@ const CountryDetail = (props) => {
                 <Typography variant='body1' sx={{ m: 1 }}>{`Languages: ${languages}`}</Typography>
             </Grid>
             <Grid
+                item
+                xs={12}
+                lg={6}
+                sx={{ mt: 2 }}
+            >
+                <Typography variant='body1'>Border Countries:</Typography>
+            </Grid>
+            <Grid
                 container
                 item
                 xs={12}
-                
-                sx={{ display: 'inline-flex', flexWrap: 'nowrap', justifyContent: 'space-between', alignItems: 'center', flexDirection: 'row', mt: 1}}
+                lg={6}
+                sx={{ display: 'inline-flex', flexWrap: 'wrap', justifyContent: 'space-evenly', alignItems: 'center', flexDirection: 'row', mt: 1}}
             >
-                <Typography variant='body1'>Border Countries:</Typography>
+                
                 {borders.length > 0 && borders.map((b, i) => (
-                    <Paper sx={{ backgroundColor: 'background.secondary' }} key={`border${i}`}>
-                        <Button variant='outlined' onClick={() => router.push(`/country/${b}`)}>{b}</Button>
+                    <Paper sx={{ backgroundColor: 'background.secondary', m: 0.5 }} key={`border${i}`} >
+                        <Link href={`/country/${b}`}>
+                        <a style={{ textDecoration: 'none' }}><Button variant='outlined'>{b}</Button></a>
+                        </Link>
                     </Paper>
                 ))}
             </Grid>
