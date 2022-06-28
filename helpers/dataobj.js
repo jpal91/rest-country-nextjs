@@ -42,7 +42,8 @@ export const getDetailedData = (obj) => {
         capital: obj.capital || null,
         tld: obj.tld[0],
         currency: currencies,
-        languages: languages
+        languages: languages,
+        borders: obj.borders || []
     }
 
     return cDetail
